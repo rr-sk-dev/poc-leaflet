@@ -1,4 +1,4 @@
-const speedometerElem = document.getElementById('speedometer') as HTMLDivElement;
+// const speedometerElem = document.getElementById('speedometer') as HTMLDivElement;
 const speedElem = document.getElementById('speed') as HTMLDivElement;
 
 let watchId: number = -1;
