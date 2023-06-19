@@ -4,15 +4,13 @@ const speedElem = document.getElementById('speed') as HTMLDivElement;
 let watchId: number = -1;
 
 const onPositionChange = (position: GeolocationPosition) => {
-  const speed = position.coords.speed || 0 + Date.now();
-
-  console.log(speed);
+  const speed = position.coords.speed;
 
   if (!speed) {
     return;
   }
 
-  speedElem.textContent = `${position.coords.speed?.toFixed(1)}`;
+  speedElem.textContent = `${speed.toFixed(1)}`;
 };
 
 const handlePositionError = (error: GeolocationPositionError) => {
