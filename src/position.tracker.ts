@@ -1,4 +1,4 @@
-const TIME_INTERVAL = 1000 * 3;
+const TIME_INTERVAL = 1000 * 2;
 
 let interval: number;
 
