@@ -8,7 +8,7 @@ const longitudeElem = document.getElementById('longitude') as HTMLDivElement;
 
 const onPositionTrack = (position: GeolocationPosition) => {
   const { latitude, longitude, speed } = position.coords;
-  speedElem.textContent = `${(speed || 0).toFixed(1)}`;
+  speedElem.textContent = `${speed ? speed.toFixed(1) : 0}`;
   latitudeElem.textContent = `${latitude.toFixed(1)}`;
   longitudeElem.textContent = `${longitude.toFixed(1)}`;
 };
