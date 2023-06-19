@@ -2,14 +2,10 @@ import { addMarkerToMap, buildMap, drawRouteLine, positions } from './map.utils'
 import { startSpeedTracker, stopSpeedTracker } from './speed-tracker.utils';
 import './style.css';
 
-const showMap = true;
-
-if (showMap) {
-  buildMap(positions[0]);
-  addMarkerToMap(positions[0]);
-  addMarkerToMap(positions[positions.length - 1]);
-  drawRouteLine(positions);
-}
+buildMap(positions[0]);
+addMarkerToMap(positions[0]);
+addMarkerToMap(positions[positions.length - 1]);
+drawRouteLine(positions);
 
 const startSpeedTrackerBtn = document.getElementById(
   'start-speed-tracker-btn'
