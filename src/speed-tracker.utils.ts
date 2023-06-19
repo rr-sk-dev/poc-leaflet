@@ -6,6 +6,8 @@ let watchId: number = -1;
 const onPositionChange = (position: GeolocationPosition) => {
   const speed = position.coords.speed;
 
+  console.log('onPositionChange', position.coords);
+
   if (!speed) {
     return;
   }
@@ -17,18 +19,6 @@ const handlePositionError = (error: GeolocationPositionError) => {
   console.log('ERROR');
   console.log(error.message);
 };
-
-// export const startSpeedTracker = () => {
-//   speedometerElem?.addEventListener('click', () => {
-//     if (watchId < 0) {
-//       watchId = navigator.geolocation.watchPosition(onPositionChange, handlePositionError);
-//     } else {
-//       navigator.geolocation.clearWatch(watchId);
-//       watchId = -1;
-//       speedElem.textContent = '0';
-//     }
-//   });
-// };
 
 export const startSpeedTracker = () => {
   watchId = navigator.geolocation.watchPosition(onPositionChange, handlePositionError);
