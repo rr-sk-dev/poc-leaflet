@@ -1,4 +1,4 @@
-import { map as Lmap, Map, marker, polyline, tileLayer } from 'leaflet';
+import { LatLng, map as Lmap, Map, Marker, marker, polyline, tileLayer } from 'leaflet';
 
 export const positions: [number, number][] = [
   [38.74010102683749, -9.402698278710005],
@@ -21,10 +21,18 @@ export const buildMap = (initialPosition: [number, number], initialZoom: number 
   }).addTo(map);
 };
 
-export const addMarkerToMap = (position: [number, number]) => {
-  marker(position).addTo(map);
-};
-
 export const drawRouteLine = (positions: [number, number][]) => {
   polyline(positions, { color: '#F00' }).addTo(map);
+};
+
+export const updateMapPositioning = (lat: number, long: number) => {
+  map.panTo(new LatLng(lat, long));
+};
+
+export const addMarkerToMap = (position: [number, number]) => {
+  return marker(position).addTo(map);
+};
+
+export const removeMarker = (marker: Marker<any> | null) => {
+  marker?.removeFrom(map);
 };
