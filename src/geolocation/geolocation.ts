@@ -24,7 +24,8 @@ export const getCurrentLocationData = async () => {
         console.log(err);
         console.log();
         reject(err);
-      }
+      },
+      { enableHighAccuracy: true }
     );
   });
 };

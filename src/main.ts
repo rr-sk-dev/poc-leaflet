@@ -25,7 +25,7 @@ let watchId = -1;
 let marker: Marker<any> | null = null;
 
 const onGeolocationChange = (position: GeolocationPosition) => {
-  const { latitude, longitude, speed, accuracy } = position.coords;
+  const { latitude, longitude, speed } = position.coords;
 
   const location: [number, number] = [Number(latitude.toFixed(1)), Number(longitude.toFixed(1))];
   updateLocationElements(location);
