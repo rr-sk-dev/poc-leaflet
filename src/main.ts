@@ -9,7 +9,6 @@ const menu: any = {
 };
 
 const gridRows = Object.keys(menu).filter((key) => menu[key].enabled).length;
-console.log(gridRows);
 
 const appElem = document.getElementById('app') as HTMLDivElement;
 appElem.style.gridTemplateRows = `repeat(1fr, ${gridRows})`;
