@@ -14,7 +14,7 @@ export const updateLocationElements = (location: [number, number]) => {
 };
 
 export const getCurrentLocationData = async () => {
-  return new Promise((resolve, reject) => {
+  return new Promise<GeolocationPosition>((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         resolve(position);

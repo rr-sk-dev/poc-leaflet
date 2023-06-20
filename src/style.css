@@ -1,3 +1,7 @@
+:root {
+  font-family: 'Shantell Sans', cursive;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -13,6 +17,46 @@ body {
   height: 100%;
 
   display: grid;
+}
+
+#on-loading {
+  height: 100%;
+
+  background: #333333;
+  color: #fff;
+}
+
+span.loading {
+  position: absolute;
+  bottom: 60%;
+
+  width: 100%;
+  text-align: center;
+
+  font-size: 24px;
+}
+
+div.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.75s, visibility 0.75s;
+  height: 100%;
+}
+
+div.loader--hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+div.loader::after {
+  content: '';
+  width: 75px;
+  height: 75px;
+  border: 15px solid #dddddd;
+  border-top-color: #009578;
+  border-radius: 50%;
+  animation: loading 0.75s ease infinite;
 }
 
 #map {
@@ -118,4 +162,13 @@ button[disabled] {
   border: 2px solid #999999;
   background-color: #cccccc;
   color: #666666;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
 }

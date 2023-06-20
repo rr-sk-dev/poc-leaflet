@@ -1,5 +1,6 @@
 import { Marker } from 'leaflet';
 import {
+  getCurrentLocationData,
   startGeolocationListener,
   stopGeolocationListener,
   updateLocationElements,
@@ -7,6 +8,18 @@ import {
 } from './geolocation/geolocation';
 import { addMarkerToMap, buildMap, removeMarker } from './map.utils';
 import './style.css';
+import { removeLoadingElem, renderUi } from './view';
+
+const menu: any = {
+  maps: { id: 'map', enabled: true },
+  speedTracker: { id: 'speed-tracker', enabled: true },
+  positionTracker: { id: 'position-tracker', enabled: true },
+};
+
+const gridRows = Object.keys(menu).filter((key) => menu[key].enabled).length;
+
+const appElem = document.getElementById('app') as HTMLDivElement;
+appElem.style.gridTemplateRows = `repeat(1fr, ${gridRows})`;
 
 let watchId = -1;
 let marker: Marker<any> | null = null;
@@ -32,17 +45,6 @@ const startLocationService = () => {
   watchId = startGeolocationListener(onGeolocationChange);
 };
 
-const menu: any = {
-  maps: { id: 'map', enabled: true },
-  speedTracker: { id: 'speed-tracker', enabled: true },
-  positionTracker: { id: 'position-tracker', enabled: true },
-};
-
-const gridRows = Object.keys(menu).filter((key) => menu[key].enabled).length;
-
-const appElem = document.getElementById('app') as HTMLDivElement;
-appElem.style.gridTemplateRows = `repeat(1fr, ${gridRows})`;
-
 const startSpeedTrackerBtn = document.getElementById('start-trackers-btn') as HTMLButtonElement;
 startSpeedTrackerBtn?.addEventListener('click', () => {
   startSpeedTrackerBtn.disabled = true;
@@ -58,3 +60,13 @@ stopSpeedTrackerBtn?.addEventListener('click', () => {
 
   stopGeolocationListener(watchId);
 });
+
+const start = async () => {
+  const location = await getCurrentLocationData();
+  renderUi();
+  onGeolocationChange(location);
+
+  removeLoadingElem();
+};
+
+start();
