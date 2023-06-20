@@ -27,7 +27,7 @@ let marker: Marker<any> | null = null;
 const onGeolocationChange = (position: GeolocationPosition) => {
   const { latitude, longitude, speed } = position.coords;
 
-  const location: [number, number] = [Number(latitude.toFixed(1)), Number(longitude.toFixed(1))];
+  const location: [number, number] = [latitude, longitude];
   updateLocationElements(location);
 
   updateSpeedometer(speed);

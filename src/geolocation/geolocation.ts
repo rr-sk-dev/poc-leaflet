@@ -7,10 +7,10 @@ export const updateSpeedometer = (speed: number | null) => {
 };
 
 export const updateLocationElements = (location: [number, number]) => {
-  latitudeElem.innerHTML = 'Latitude';
-  latitudeElem.innerHTML += `<br>${location[0]}°`;
-  longitudeElem.innerHTML = 'Longitude';
-  longitudeElem.innerHTML += `<br>${location[1]}°`;
+  latitudeElem.innerHTML = 'Lat.';
+  latitudeElem.innerHTML += `<br>${location[0].toFixed(1)}°`;
+  longitudeElem.innerHTML = 'Long.';
+  longitudeElem.innerHTML += `<br>${location[1].toFixed(1)}°`;
 };
 
 export const getCurrentLocationData = async () => {
