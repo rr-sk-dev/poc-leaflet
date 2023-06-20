@@ -14,13 +14,6 @@ let marker: Marker<any> | null = null;
 const onGeolocationChange = (position: GeolocationPosition) => {
   const { latitude, longitude, speed, accuracy } = position.coords;
 
-  console.group(position.timestamp);
-  console.log('latitude', latitude.toFixed(1));
-  console.log('longitude', longitude.toFixed(1));
-  console.log('speed', speed?.toFixed(1));
-  console.log('accuracy', accuracy);
-  console.groupEnd();
-
   const location: [number, number] = [Number(latitude.toFixed(1)), Number(longitude.toFixed(1))];
   updateLocationElements(location);
 
